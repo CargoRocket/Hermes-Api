@@ -1,0 +1,26 @@
+{
+  "swaggerDefinition": {
+    "openapi": "3.0.0",
+    "info": {
+      "title": "CargoRocket API",
+      "version": "0.1.0",
+      "description":
+        "Basic API documentation",
+      "license": {
+        "name": "MIT",
+        "url": "https://cargorocket.de"
+      },
+      "contact": {
+        "name": "CargoRocket",
+        "url": "https://cargorocket.de",
+        "email": "team@cargorocket.de"
+      }
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000/"
+      }
+    ]
+  },
+  "apis": ["./src/routes*.js"]
+}
