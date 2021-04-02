@@ -9,7 +9,7 @@ import FileSync from 'lowdb/adapters/FileSync';
 
 // Express config
 const app = express();
-const port = 3000;
+const port = 3232;
 app.use(cors('*'));
 
 // Setup metrics data db

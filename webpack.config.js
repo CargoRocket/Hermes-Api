@@ -11,7 +11,7 @@ config.entry = "./src/main.js"
 // We build for node
 config.target = "node"
 
-config.mode = "development"
+config.mode = "production"
 
 // Node module dependencies should not be bundled
 config.externals = [nodeExternals()]
