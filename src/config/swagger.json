@@ -10,6 +10,11 @@
         "name": "MIT",
         "url": "https://cargorocket.de"
       },
+      "x-logo": {
+        "url": "https://cargorocket.de/assets/images/cargorocket-logo.svg",
+        "backgroundColor": "#FFFFFF",
+        "altText": "CargoRocket logo"
+      },
       "contact": {
         "name": "CargoRocket",
         "url": "https://cargorocket.de",

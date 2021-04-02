@@ -19,29 +19,33 @@ db.defaults({}).write()
 
 // Setup Swagger
 const specs = swaggerJsondoc(swaggerConfig);
-// app.use("/docs", swaggerUi.serve);
-
 app.get('/docs/swagger.json', (req, res) => {
   res.send(specs);
 });
-
 app.get(
   "/docs",
   redoc({
-    title: 'API Docs',
-    specUrl: '/docs/swagger.json'
+    title: 'CargoRocket API Docs',
+    specUrl: '/docs/swagger.json',
   })
 );
 
 // API key middleware
 app.use((req, res, next) => {
-  req.query.access_token = 
+  // Todo check and log req.query.access_token
   next();
 });
 
 // Endpoints
 routes(app);
 
+// Error handler
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(err.status).send(err);
+})
+
+// Start Server
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
