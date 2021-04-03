@@ -91,6 +91,12 @@ export default (app) => {
    *           maxItems: 2
    *         required: true
    *         description: Latitude and longitude of destination location
+   *       - in: path
+   *         name: access_token
+   *         schema:
+   *           type: string
+   *         required: true
+   *         description: MapBox Access token
    * 
    *     responses:
    *       200:
@@ -104,9 +110,11 @@ export default (app) => {
     // Check Parameters
     let from;
     let to;
+    let access_token;
     try {
       from = required(req, 'from', 'array', { minLength: 2, maxLength: 2 });
       to =  required(req, 'to', 'array', { minLength: 2, maxLength: 2 });
+      access_token =  required(req, 'access_token', 'string');
     } catch (error) {
       error.status = 400;
       error.description = error.message;
@@ -119,7 +127,7 @@ export default (app) => {
           response.data,
           undefined,
           'de',
-          'xyz-mapbox-key',
+          access_token,
           'polyline6'
         ));
       })
