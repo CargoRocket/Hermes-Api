@@ -1,6 +1,7 @@
 import axios from 'axios';
 import graphhopper from './config/graphhopper.json';
 import { required } from './helpers/parameters';
+import directionsMapper from './helpers/directions_mapper';
 
 export default (app) => {
   /**
@@ -99,7 +100,7 @@ export default (app) => {
    *             schema:
    *               $ref: '#/components/schemas/MAPBOX_DIRECTION_RESPONSE'
    */
-   app.get('/route-gh', (req, res, next) => {
+   app.get('/route-mb', (req, res, next) => {
     // Check Parameters
     let from;
     let to;
@@ -112,9 +113,15 @@ export default (app) => {
       return next(error);
     }
     // Request route from graphhopper
-    axios.get(`${graphhopper.url}${graphhopper.route}?locale=de&point=${from.join(',')}&point=${to.join(',')}&details=road_class&details=max_speed&instructions=true`)
+    axios.get(`${graphhopper.url}${graphhopper.route}?locale=de&point=${from.join(',')}&point=${to.join(',')}&points_encoded=false&details=road_class&details=max_speed&instructions=true`)
       .then((response) => {
-        res.send(response.data)
+        res.send(directionsMapper.getMapping(
+          response.data,
+          undefined,
+          'de',
+          'xyz-mapbox-key',
+          'polyline6'
+        ));
       })
       .catch((error) => {
         error.status = 500;

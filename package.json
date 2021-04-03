@@ -2,7 +2,7 @@
   "name": "middleware",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/main.js",
   "scripts": {
     "build": "webpack",
     "dev": "webpack && node build/bundle.js"
@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/preset-env": "^7.9.6",
+    "@mapbox/polyline": "^1.1.1",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",

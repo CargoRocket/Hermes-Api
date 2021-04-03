@@ -27,7 +27,6 @@ const parseDataType = (req, name, type, options) => {
 }
 
 export const required = (req, name, type, options) => {
-  console.log(typeof req.query[name]);
   if (req.query[name]) {
     return parseDataType(req, name, type, options);
   }
