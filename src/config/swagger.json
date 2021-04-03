@@ -27,5 +27,5 @@
       }
     ]
   },
-  "apis": ["./src/routes*.js", "./src/doc/schema/graphhopper*.js"]
+  "apis": ["./src/routes*.js", "./src/doc/schema/graphhopper*.js", "./src/doc/schema/mapbox*.js"]
 }

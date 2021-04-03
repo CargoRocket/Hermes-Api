@@ -97,7 +97,7 @@ export default (app) => {
    *         content:
    *           application/json:
    *             schema:
-   *               $ref: '#/components/schemas/RouteResponse'
+   *               $ref: '#/components/schemas/MAPBOX_DIRECTION_RESPONSE'
    */
    app.get('/route-gh', (req, res, next) => {
     // Check Parameters
