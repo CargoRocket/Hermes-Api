@@ -41,6 +41,15 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           user: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
+      - name: Publish Webpack.config
+        uses: nogsantos/scp-deploy@master
+        with:
+          src: ./webpack.config.js
+          host: ${{ secrets.SSH_HOST }}
+          remote: ${{ secrets.SSH_DIR }}
+          port: ${{ secrets.SSH_PORT }}
+          user: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
       - name: Publish src for doc
         uses: nogsantos/scp-deploy@master
         with:
@@ -68,7 +77,7 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
       - name: Install Package.json
         run: |
-          ssh staging 'cd ${{ secrets.SSH_DIR }} && npm i'
+          ssh staging 'cd ${{ secrets.SSH_DIR }} && npm i && npm run build'
       - name: Stop the server
         run: ssh staging 'sudo /bin/systemctl stop cargorocket-api'
       - name: Start the server
