@@ -17,21 +17,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Prepare
-        run: |
-          npm i
-      - name: Build
-        run: |
-          npm run build
-      - name: Publish
-        uses: nogsantos/scp-deploy@master
-        with:
-          src: ./build*
-          host: ${{ secrets.SSH_HOST }}
-          remote: ${{ secrets.SSH_DIR }}
-          port: ${{ secrets.SSH_PORT }}
-          user: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
       - name: Publish Package.json
         uses: nogsantos/scp-deploy@master
         with:

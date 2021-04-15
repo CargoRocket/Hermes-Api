@@ -1,0 +1,3 @@
+[1618494502923][Cargorocket-APP-Key][500] /route?from=[98.776167,9.177383]&to=[48.686078,9.19154]&access_token=asdasd&format=mapbox&key=QxxyBxRRNAyRfX2WXBXsuP6t Request failed with status code 400
+[1618494522367][unauthorized][401] /route?from=[98.776167,9.177383]&to=[48.686078,9.19154]&access_token=asdasd&format=mapbox&key=QxxyBxRRNAyRfX2WXBXsuP6 Please provide a valid API key
+[1618494527685][Cargorocket-APP-Key][500] /route?from=[98.776167,9.177383]&to=[48.686078,9.19154]&access_token=asdasd&format=mapbox&key=QxxyBxRRNAyRfX2WXBXsuP6t Request failed with status code 400

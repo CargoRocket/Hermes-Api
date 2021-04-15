@@ -8,7 +8,7 @@ export default (app) => {
    * /routes:
    *   get:
    *     title: Bikerouting / Cargobike routing
-   *     description: Formatted in Mapbox-navigation format.
+   *     description: Bikerouting / Cargobike routing
    *     parameters:
    *       - in: path
    *         name: from
