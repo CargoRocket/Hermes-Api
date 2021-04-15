@@ -6,6 +6,7 @@ import swaggerJsondoc from 'swagger-jsdoc';
 import redoc from 'redoc-express';
 import low from 'lowdb';
 import FileSync from 'lowdb/adapters/FileSync';
+import apiKeys from './config/keys.json';
 
 // Express config
 const app = express();
@@ -31,8 +32,14 @@ app.get(
 );
 
 // API key middleware
+const keys = Object.keys(apiKeys);
 app.use((req, res, next) => {
-  // Todo check and log req.query.access_token
+  if (!req.query['key'] || !keys.includes(req.query['key'])) {
+    return res.status('403').send({
+      'status': 403,
+      'message': 'Please provide a valid API key',
+    });
+  }
   next();
 });
 
