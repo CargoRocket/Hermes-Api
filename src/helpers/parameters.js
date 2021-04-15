@@ -4,6 +4,7 @@ export const paramTypes = {
   Array: 'array',
   Integer: 'integer',
   Float: 'float',
+  Enum: 'enum',
 }
 
 const parseDataType = (req, name, type, options) => {
@@ -23,6 +24,11 @@ const parseDataType = (req, name, type, options) => {
   if (type === paramTypes.Integer) {
     return parseFloat(req.query[name]);
   }
+  if (type === paramTypes.Enum) {
+    if (!options.options.includes(req.query[name])) {
+      throw new Error(`Parameter ${name} did not satisfy on of the possible values! (${options.options.join(',')})`);
+    }
+  }
   return req.query[name];
 }
 
@@ -34,7 +40,7 @@ export const required = (req, name, type, options) => {
 }
 
 export const optional = (req, name, type, defaultValue, options) => {
-  if (req.query[name] && typeof req.query[name] === type) {
+  if (req.query[name]) {
     return parseDataType(req, name, type, options);
   }
   return defaultValue;
