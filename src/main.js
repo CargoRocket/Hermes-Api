@@ -11,6 +11,7 @@ import { writeAccess, writeError } from './logging';
 const app = express();
 const port = 3232;
 app.use(cors('*'));
+app.use(express.json());
 
 // Setup Swagger
 const specs = swaggerJsondoc(swaggerConfig);

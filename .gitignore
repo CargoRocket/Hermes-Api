@@ -4,3 +4,9 @@ node_modules/
 build/
 
 src/config/keys.json
+
+src/config/smtp.json
+
+logs/error.log
+
+logs/access.log

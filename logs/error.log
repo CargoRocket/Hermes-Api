@@ -1,3 +1,11 @@
 [1618494502923][Cargorocket-APP-Key][500] /route?from=[98.776167,9.177383]&to=[48.686078,9.19154]&access_token=asdasd&format=mapbox&key=QxxyBxRRNAyRfX2WXBXsuP6t Request failed with status code 400
 [1618494522367][unauthorized][401] /route?from=[98.776167,9.177383]&to=[48.686078,9.19154]&access_token=asdasd&format=mapbox&key=QxxyBxRRNAyRfX2WXBXsuP6 Please provide a valid API key
 [1618494527685][Cargorocket-APP-Key][500] /route?from=[98.776167,9.177383]&to=[48.686078,9.19154]&access_token=asdasd&format=mapbox&key=QxxyBxRRNAyRfX2WXBXsuP6t Request failed with status code 400
+[1620229110091][unauthorized][401] /mail Please provide a valid API key
+[1620229131452][Cargorocket-SPARE-Key][undefined] /mail?key=n5oRiPZ2YaiTPfefUt5hVTdm Cannot read property 'message' of undefined
+[1620229248026][Cargorocket-SPARE-Key][undefined] /mail?key=n5oRiPZ2YaiTPfefUt5hVTdm Parameter "message" of type string not satisfied
+[1620229304700][Cargorocket-SPARE-Key][400] /mail?key=n5oRiPZ2YaiTPfefUt5hVTdm Parameter "message" of type string not satisfied
+[1620229345330][Cargorocket-SPARE-Key][400] /mail?key=n5oRiPZ2YaiTPfefUt5hVTdm Parameter "email" of type string not satisfied
+[1620229381204][Cargorocket-SPARE-Key][undefined] /mail?key=n5oRiPZ2YaiTPfefUt5hVTdm nodemailer is not defined
+[1620229382451][Cargorocket-SPARE-Key][undefined] /mail?key=n5oRiPZ2YaiTPfefUt5hVTdm nodemailer is not defined
+[1620229502624][Cargorocket-SPARE-Key][undefined] /mail?key=n5oRiPZ2YaiTPfefUt5hVTdm smtpConfig is not defined
