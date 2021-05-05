@@ -77,7 +77,7 @@ export default (app) => {
     Promise.all([
       requestCargobikeRoute(from, to, next),
       requestBikeRoute(from, to, next),
-    ]).then(([bikeRoute, cargobikeRoute]) => {
+    ]).then(([cargobikeRoute, bikeRoute]) => {
       try {
         let bikeRouteFormatted = bikeRoute;
         let cargobikeRouteFormatted = cargobikeRoute;
