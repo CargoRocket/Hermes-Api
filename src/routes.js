@@ -58,7 +58,7 @@ export default (app) => {
    */
    app.get('/route', (req, res, next) => {
     // PARAMETERS
-    let from, to, access_token, format;
+    let from, to, access_token, format, lang;
     try {
       from = required(req.query, 'from', paramTypes.Array, { minLength: 2, maxLength: 2 });
       to =  required(req.query, 'to', paramTypes.Array, { minLength: 2, maxLength: 2 });
@@ -67,6 +67,8 @@ export default (app) => {
         'mapbox',
         'graphhopper',
       ]});
+      lang = optional(req.query, 'lang', paramTypes.String, 'en');
+      console.log(lang);
     } catch (error) {
       error.status = 400;
       error.description = error.message;
@@ -75,8 +77,8 @@ export default (app) => {
 
     // EXECUTION
     Promise.all([
-      requestCargobikeRoute(from, to, next),
-      requestBikeRoute(from, to, next),
+      requestCargobikeRoute(from, to, next, lang),
+      requestBikeRoute(from, to, next, lang),
     ]).then(([cargobikeRoute, bikeRoute]) => {
       try {
         let bikeRouteFormatted = bikeRoute;
@@ -86,14 +88,14 @@ export default (app) => {
           bikeRouteFormatted = directionsMapper.getMapping(
             bikeRoute,
             undefined,
-            'de',
+            lang,
             access_token,
             'polyline6'
           );
           cargobikeRouteFormatted = directionsMapper.getMapping(
             cargobikeRoute,
             undefined,
-            'de',
+            lang,
             access_token,
             'polyline6'
           );
