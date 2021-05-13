@@ -1,4 +1,5 @@
 {
   "url": "https://graphhopper.cargorocket.de",
-  "route": "/route"
+  "route": "/route",
+  "info": "/info"
 }

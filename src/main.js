@@ -1,7 +1,8 @@
 import express from 'express';
 import swaggerConfig from './config/swagger.json';
 import cors from 'cors';
-import routes from './routes';
+import general from './routes/general';
+import v1 from './routes/v1';
 import swaggerJsondoc from 'swagger-jsdoc';
 import redoc from 'redoc-express';
 import apiKeys from './config/keys.json';
@@ -42,7 +43,8 @@ app.use((req, res, next) => {
 });
 
 // Endpoints
-routes(app);
+general(app);
+v1(app);
 
 // Error handler
 app.use((err, req, res, next) => {

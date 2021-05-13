@@ -9,3 +9,15 @@
 [1620229381204][Cargorocket-SPARE-Key][undefined] /mail?key=n5oRiPZ2YaiTPfefUt5hVTdm nodemailer is not defined
 [1620229382451][Cargorocket-SPARE-Key][undefined] /mail?key=n5oRiPZ2YaiTPfefUt5hVTdm nodemailer is not defined
 [1620229502624][Cargorocket-SPARE-Key][undefined] /mail?key=n5oRiPZ2YaiTPfefUt5hVTdm smtpConfig is not defined
+[1620896025826][unauthorized][401] /info Please provide a valid API key
+[1620896065180][Cargorocket-SPARE-Key][400] /v1/info?key=n5oRiPZ2YaiTPfefUt5hVTdm Parameter "from" of type array not satisfied
+[1620896097535][Cargorocket-SPARE-Key][undefined] /v1/info?key=n5oRiPZ2YaiTPfefUt5hVTdm requestInfo is not defined
+[1620896217979][Cargorocket-SPARE-Key][500] /v1/info?key=n5oRiPZ2YaiTPfefUt5hVTdm Converting circular structure to JSON
+    --> starting at object with constructor 'ClientRequest'
+    |     property 'socket' -> object with constructor 'TLSSocket'
+    --- property '_httpMessage' closes the circle
+[1620896306418][Cargorocket-APP-Key][undefined] /v1/route?from=[48.776167,9.177383]&to=[48.686078,9.19154]&access_token=asdasd&key=QxxyBxRRNAyRfX2WXBXsuP6t&format=mapbox&lang=de profile is not defined
+[1620896356916][Cargorocket-APP-Key][undefined] /v1/route?from=[48.776167,9.177383]&to=[48.686078,9.19154]&access_token=asdasd&key=QxxyBxRRNAyRfX2WXBXsuP6t&format=mapbox&lang=de (void 0) is not a function
+[1620896371698][Cargorocket-APP-Key][undefined] /v1/route?from=[48.776167,9.177383]&to=[48.686078,9.19154]&access_token=asdasd&key=QxxyBxRRNAyRfX2WXBXsuP6t&format=mapbox&lang=de (void 0) is not a function
+[1620898641081][Cargorocket-APP-Key][500] /v1/routes?from=[48.776167,9.177383]&to=[48.686078,9.19154]&access_token=asdasd&key=QxxyBxRRNAyRfX2WXBXsuP6t&format=mapbox&lang=de Cannot read property 'map' of undefined
+[1620898887845][Cargorocket-APP-Key][500] /v1/routes?from=[48.776167,9.177383]&to=[48.686078,9.19154]&access_token=asdasd&key=QxxyBxRRNAyRfX2WXBXsuP6t&format=mapbox&lang=de index is not defined
