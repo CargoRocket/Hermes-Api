@@ -66,6 +66,12 @@ export default (app, db) => {
    *           type: float
    *         required: false
    *         description: Defining the length of the bike for more accurate routing.
+   *       - in: path
+   *         name: request_type
+   *         schema:
+   *           type: string
+   *         required: false
+   *         description: More specific information about the cause of the request i.e. routing, rerouting, analysis
    * 
    *     responses:
    *       200:
@@ -80,7 +86,7 @@ export default (app, db) => {
    */
    app.get('/v1/route', (req, res, next) => {
     // PARAMETERS
-    let from, to, access_token, format, lang, profile, bicycle_width, bicycle_length;
+    let from, to, access_token, format, lang, profile, bicycle_width, bicycle_length, request_type;
     try {
       from = required(req.query, 'from', paramTypes.Array, { minLength: 2, maxLength: 2 });
       to =  required(req.query, 'to', paramTypes.Array, { minLength: 2, maxLength: 2 });
@@ -93,6 +99,7 @@ export default (app, db) => {
       lang = optional(req.query, 'lang', paramTypes.String, 'en');
       bicycle_width = optional(req.query, 'bicycle_width', paramTypes.Float, null);
       bicycle_length = optional(req.query, 'bicycle_length', paramTypes.Float, null);
+      request_type = optional(req.query, 'request_type', paramTypes.String, null);
     } catch (error) {
       error.status = 400;
       error.description = error.message;
@@ -181,6 +188,12 @@ export default (app, db) => {
    *           type: float
    *         required: false
    *         description: Defining the length of the bike for more accurate routing.
+   *       - in: path
+   *         name: request_type
+   *         schema:
+   *           type: string
+   *         required: false
+   *         description: More specific information about the cause of the request i.e. routing, rerouting, analysis
    * 
    *     responses:
    *       200:
@@ -195,7 +208,7 @@ export default (app, db) => {
    */
   app.get('/v1/routes', (req, res, next) => {
     // PARAMETERS
-    let from, to, access_token, format, lang, bicycle_width, bicycle_length;
+    let from, to, access_token, format, lang, bicycle_width, bicycle_length, request_type;
     try {
       from = required(req.query, 'from', paramTypes.Array, { minLength: 2, maxLength: 2 });
       to =  required(req.query, 'to', paramTypes.Array, { minLength: 2, maxLength: 2 });
@@ -207,6 +220,7 @@ export default (app, db) => {
       lang = optional(req.query, 'lang', paramTypes.String, 'en');
       bicycle_width = optional(req.query, 'bicycle_width', paramTypes.Float, null);
       bicycle_length = optional(req.query, 'bicycle_length', paramTypes.Float, null);
+      request_type = optional(req.query, 'request_type', paramTypes.String, null);
     } catch (error) {
       error.status = 400;
       error.description = error.message;
