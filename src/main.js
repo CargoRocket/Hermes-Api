@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import swaggerConfig from './config/swagger.json';
 import cors from 'cors';
 import general from './routes/general';
@@ -7,12 +8,19 @@ import swaggerJsondoc from 'swagger-jsdoc';
 import redoc from 'redoc-express';
 import apiKeys from './config/keys.json';
 import { writeAccess, writeError } from './logging';
+import low from 'lowdb';
+import FileSync from 'lowdb/adapters/FileSync';
 
 // Express config
 const app = express();
 const port = 3232;
 app.use(cors('*'));
 app.use(express.json());
+
+// Setup DB
+const adapter = new FileSync(path.resolve('./data/db.json'))
+const db = low(adapter)
+db.defaults({finishedRoutes: []}).write()
 
 // Setup Swagger
 const specs = swaggerJsondoc(swaggerConfig);
@@ -44,7 +52,7 @@ app.use((req, res, next) => {
 
 // Endpoints
 general(app);
-v1(app);
+v1(app, db);
 
 // Error handler
 app.use((err, req, res, next) => {

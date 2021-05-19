@@ -34,3 +34,5 @@
 [1620898688499][Cargorocket-APP-Key] /v1/routes?from=[48.776167,9.177383]&to=[48.686078,9.19154]&access_token=asdasd&key=QxxyBxRRNAyRfX2WXBXsuP6t&format=mapbox&lang=de
 [1620898887513][Cargorocket-APP-Key] /v1/routes?from=[48.776167,9.177383]&to=[48.686078,9.19154]&access_token=asdasd&key=QxxyBxRRNAyRfX2WXBXsuP6t&format=mapbox&lang=de
 [1620898922232][Cargorocket-APP-Key] /v1/routes?from=[48.776167,9.177383]&to=[48.686078,9.19154]&access_token=asdasd&key=QxxyBxRRNAyRfX2WXBXsuP6t&format=mapbox&lang=de
+[1621417959514][Cargorocket-SPARE-Key] /v1/finish?from=[48.31392591,10.90606022]&to=[48.31346036470157,10.905635741499935]&key=n5oRiPZ2YaiTPfefUt5hVTdm&time=234234
+[1621417989599][Cargorocket-SPARE-Key] /v1/info?key=n5oRiPZ2YaiTPfefUt5hVTdm&time=234234

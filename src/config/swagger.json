@@ -3,9 +3,9 @@
     "openapi": "3.0.0",
     "info": {
       "title": "CargoRocket API",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "description":
-        "Basic API documentation",
+        "API documentation",
       "license": {
         "name": "MIT",
         "url": "https://cargorocket.de"
@@ -23,9 +23,9 @@
     },
     "servers": [
       {
-        "url": "http://localhost:3000/"
+        "url": "https://api.cargorocket.de"
       }
     ]
   },
-  "apis": ["./src/routes*.js", "./src/doc/schema/graphhopper*.js", "./src/doc/schema/mapbox*.js"]
+  "apis": ["./src/routes/*.js", "./src/doc/schema/graphhopper*.js", "./src/doc/schema/mapbox*.js"]
 }

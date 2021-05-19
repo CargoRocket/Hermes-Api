@@ -1,8 +1,23 @@
 import axios from 'axios';
 import graphhopper from '../config/graphhopper.json';
 
-export const requestRoute = async (from, to, profile, lang) => {
-  return axios.get(`${graphhopper.url}${graphhopper.route}?locale=${lang}&point=${from.join(',')}&point=${to.join(',')}&points_encoded=false&details=road_class&details=max_speed&instructions=true&profile=${profile}`)
+export const requestRoute = async (from, to, profile, lang, bicycle_width = null, bicycle_length = null) => {
+
+  const endpointUrl = new URL(`${graphhopper.url}${graphhopper.route}`);
+
+  endpointUrl.searchParams.append('locale', lang);
+  endpointUrl.searchParams.append('point', from.join(','));
+  endpointUrl.searchParams.append('point', to.join(','));
+  endpointUrl.searchParams.append('points_encoded', 'false');
+  endpointUrl.searchParams.append('instructions', 'true');
+  endpointUrl.searchParams.append('profile', profile);
+  if (bicycle_width) {
+    endpointUrl.searchParams.append('bicycle_width', bicycle_width);
+  }
+  if (bicycle_length) {
+    endpointUrl.searchParams.append('bicycle_width', bicycle_width);
+  }
+  return axios.get(endpointUrl.href)
 }
 
 export const requestInfo = async () => {

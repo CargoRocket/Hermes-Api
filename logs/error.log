@@ -21,3 +21,13 @@
 [1620896371698][Cargorocket-APP-Key][undefined] /v1/route?from=[48.776167,9.177383]&to=[48.686078,9.19154]&access_token=asdasd&key=QxxyBxRRNAyRfX2WXBXsuP6t&format=mapbox&lang=de (void 0) is not a function
 [1620898641081][Cargorocket-APP-Key][500] /v1/routes?from=[48.776167,9.177383]&to=[48.686078,9.19154]&access_token=asdasd&key=QxxyBxRRNAyRfX2WXBXsuP6t&format=mapbox&lang=de Cannot read property 'map' of undefined
 [1620898887845][Cargorocket-APP-Key][500] /v1/routes?from=[48.776167,9.177383]&to=[48.686078,9.19154]&access_token=asdasd&key=QxxyBxRRNAyRfX2WXBXsuP6t&format=mapbox&lang=de index is not defined
+[1621417263336][unauthorized][401] / Please provide a valid API key
+[1621417268945][unauthorized][401] /favicon.ico Please provide a valid API key
+[1621417309575][unauthorized][401] /favicon.ico Please provide a valid API key
+[1621417330156][unauthorized][401] /favicon.ico Please provide a valid API key
+[1621417447939][unauthorized][401] /favicon.ico Please provide a valid API key
+[1621417692180][unauthorized][401] /favicon.ico Please provide a valid API key
+[1621417706190][unauthorized][401] /favicon.ico Please provide a valid API key
+[1621417936005][unauthorized][401] /v1/finish?from=[48.31392591,10.90606022]&to=[48.31346036470157,10.905635741499935]&access_token=pk.eyJ1IjoidGhlbmV3Y2l2aWxpYW4iLCJhIjoiY2pncDJwYWl0MDBvdTMzbWxpcHBoc24wNCJ9.kUw_kFeEUVVqE6-1l4VsIw&time=234234 Please provide a valid API key
+[1621417951913][unauthorized][401] /v1/finish?from=[48.31392591,10.90606022]&to=[48.31346036470157,10.905635741499935]&access_token=n5oRiPZ2YaiTPfefUt5hVTdm&time=234234 Please provide a valid API key
+[1621417982059][unauthorized][401] /v1/info&key=n5oRiPZ2YaiTPfefUt5hVTdm&time=234234 Please provide a valid API key

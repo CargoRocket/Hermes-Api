@@ -10,3 +10,5 @@ src/config/smtp.json
 logs/error.log
 
 logs/access.log
+
+data/db.json
