@@ -5,19 +5,27 @@
   ---
 </div>
 
-### Run the CargoRocket API-Middleware
-#### Install dependencies
+Providing all services of the CargoRocket backbone at one centralized instance.
 
-`npm install`
+For more specific insights check our [Live Doc](https://api.cargorocket.de/docs)
 
-#### Run development server
+Feel free to contact us about an API-Key.
+## Development
 
-`npm run dev`
+```sh
+# Install dependencies
+$ yarn
 
-#### Build bundle
+# Run development server
+$ yarn dev
 
-`npm run build`
+# Build bundle
+$ yarn build
 
-#### Execute bundle
+# Execute bundle
+$ node build/bundle.js
+```
 
-`node build/bundle.js`
+## Contribute
+
+Please follow our [Contribution Guidelines](./CONTRIBUTE.md)
