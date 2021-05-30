@@ -31,6 +31,14 @@ export default (app, db) => {
    *         required: true
    *         description: Latitude and longitude of destination location
    *       - in: path
+   *         name: vias
+   *         schema:
+   *           type: array
+   *           items:
+   *             type: float
+   *         required: false
+   *         description: List of via points
+   *       - in: path
    *         name: access_token
    *         schema:
    *           type: string
@@ -86,10 +94,11 @@ export default (app, db) => {
    */
    app.get('/v1/route', (req, res, next) => {
     // PARAMETERS
-    let from, to, access_token, format, lang, profile, bicycle_width, bicycle_length, request_type;
+    let from, to, access_token, format, lang, profile, bicycle_width, bicycle_length, request_type, via;
     try {
       from = required(req.query, 'from', paramTypes.Array, { minLength: 2, maxLength: 2 });
-      to =  required(req.query, 'to', paramTypes.Array, { minLength: 2, maxLength: 2 });
+      to = required(req.query, 'to', paramTypes.Array, { minLength: 2, maxLength: 2 });
+      vias = optional(req.query, 'vias', paramTypes.Array, []);
       access_token =  required(req.query, 'access_token', paramTypes.String);
       format = optional(req.query, 'format', paramTypes.Enum, 'graphhopper', {options: [
         'mapbox',
@@ -106,7 +115,7 @@ export default (app, db) => {
       return next(error);
     }
 
-    requestRoute(from, to, profile, lang).then((route) => {
+    requestRoute(from, to, vias, profile, lang).then((route) => {
       try {
         let routeFormatted = route.data;
         if (format === 'mapbox') {
@@ -159,6 +168,14 @@ export default (app, db) => {
    *         required: true
    *         description: Latitude and longitude of destination location
    *       - in: path
+   *         name: vias
+   *         schema:
+   *           type: array
+   *           items:
+   *             type: float
+   *         required: false
+   *         description: List of via points
+   *       - in: path
    *         name: access_token
    *         schema:
    *           type: string
@@ -208,11 +225,12 @@ export default (app, db) => {
    */
   app.get('/v1/routes', (req, res, next) => {
     // PARAMETERS
-    let from, to, access_token, format, lang, bicycle_width, bicycle_length, request_type;
+    let from, to, vias, access_token, format, lang, bicycle_width, bicycle_length, request_type;
     try {
       from = required(req.query, 'from', paramTypes.Array, { minLength: 2, maxLength: 2 });
       to =  required(req.query, 'to', paramTypes.Array, { minLength: 2, maxLength: 2 });
       access_token =  required(req.query, 'access_token', paramTypes.String);
+      vias = optional(req.query, 'vias', paramTypes.Array, []);
       format = optional(req.query, 'format', paramTypes.Enum, 'graphhopper', {options: [
         'mapbox',
         'graphhopper',
@@ -231,7 +249,7 @@ export default (app, db) => {
       const profiles = [];
       const routeRequests = info.data.profiles.map((profile) => {
         profiles.push(profile);
-        return requestRoute(from, to, profile.name, lang, bicycle_width, bicycle_length);
+        return requestRoute(from, to, vias, profile.name, lang, bicycle_width, bicycle_length);
       });
 
         Promise.all(routeRequests).then((routes) => {

@@ -1,12 +1,13 @@
 import axios from 'axios';
 import graphhopper from '../config/graphhopper.json';
 
-export const requestRoute = async (from, to, profile, lang, bicycle_width = null, bicycle_length = null) => {
+export const requestRoute = async (from, to, vias, profile, lang, bicycle_width = null, bicycle_length = null) => {
 
   const endpointUrl = new URL(`${graphhopper.url}${graphhopper.route}`);
 
   endpointUrl.searchParams.append('locale', lang);
   endpointUrl.searchParams.append('point', from.join(','));
+  vias.forEach((via) => endpointUrl.searchParams.append('point', via.join(',')));
   endpointUrl.searchParams.append('point', to.join(','));
   endpointUrl.searchParams.append('points_encoded', 'false');
   endpointUrl.searchParams.append('instructions', 'true');
