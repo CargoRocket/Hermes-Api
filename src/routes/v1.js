@@ -98,7 +98,7 @@ export default (app, db) => {
     try {
       from = required(req.query, 'from', paramTypes.Array, { minLength: 2, maxLength: 2 });
       to = required(req.query, 'to', paramTypes.Array, { minLength: 2, maxLength: 2 });
-      vias = optional(req.query, 'vias', paramTypes.Array, []);
+      vias = optional(req.query, 'vias', paramTypes.Array, [], { minLength: 1, maxLength: 10 });
       access_token =  required(req.query, 'access_token', paramTypes.String);
       format = optional(req.query, 'format', paramTypes.Enum, 'graphhopper', {options: [
         'mapbox',
@@ -230,7 +230,7 @@ export default (app, db) => {
       from = required(req.query, 'from', paramTypes.Array, { minLength: 2, maxLength: 2 });
       to =  required(req.query, 'to', paramTypes.Array, { minLength: 2, maxLength: 2 });
       access_token =  required(req.query, 'access_token', paramTypes.String);
-      vias = optional(req.query, 'vias', paramTypes.Array, []);
+      vias = optional(req.query, 'vias', paramTypes.Array, [], { minLength: 1, maxLength: 10 });
       format = optional(req.query, 'format', paramTypes.Enum, 'graphhopper', {options: [
         'mapbox',
         'graphhopper',
