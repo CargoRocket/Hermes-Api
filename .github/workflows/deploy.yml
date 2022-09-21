@@ -12,58 +12,22 @@ jobs:
       matrix:
         node-version: [14.x]
     steps:
+      - name: Setup ssh
+        uses: kielabokkie/ssh-key-and-known-hosts-action@v1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-host: ${{secrets.SSH_HOST}}
+
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Publish Package.json
-        uses: nogsantos/scp-deploy@master
-        with:
-          src: ./package.json
-          host: ${{ secrets.SSH_HOST }}
-          remote: ${{ secrets.SSH_DIR }}
-          port: ${{ secrets.SSH_PORT }}
-          user: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-      - name: Publish Webpack.config
-        uses: nogsantos/scp-deploy@master
-        with:
-          src: ./webpack.config.js
-          host: ${{ secrets.SSH_HOST }}
-          remote: ${{ secrets.SSH_DIR }}
-          port: ${{ secrets.SSH_PORT }}
-          user: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-      - name: Publish src for doc
-        uses: nogsantos/scp-deploy@master
-        with:
-          src: ./src*
-          host: ${{ secrets.SSH_HOST }}
-          remote: ${{ secrets.SSH_DIR }}
-          port: ${{ secrets.SSH_PORT }}
-          user: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-      - name: Configure SSH
+
+      - name: Install Docker Compose
         run: |
-          mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/staging.key
-          chmod 600 ~/.ssh/staging.key
-          cat >>~/.ssh/config <<END
-          Host staging
-            HostName $SSH_HOST
-            User $SSH_USER
-            IdentityFile ~/.ssh/staging.key
-            StrictHostKeyChecking no
-          END
-        env:
-          SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-      - name: Install Package.json
+          cd /tmp 
+          wget https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-linux-x86_64 -O docker-compose
+          chmod 700 docker-compose
+
+      - name: Deploy to Docker Host
         run: |
-          ssh staging 'cd ${{ secrets.SSH_DIR }} && npm i && npm run build'
-      - name: Stop the server
-        run: ssh staging 'sudo /bin/systemctl stop cargorocket-api'
-      - name: Start the server
-        run: ssh staging 'sudo /bin/systemctl start cargorocket-api'
+          echo '${{secrets.MAIL_SECRETS}}' >> ./src/config/smtp.json
+          echo '${{secrets.KEYS_SECRETS}}' >> ./src/config/keys.json
+          /tmp/docker-compose -H ssh://${{secrets.SSH_USER}}@${{secrets.SSH_HOST}} up --build -d

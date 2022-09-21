@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://cologne.xatellite.io/logo-pfade.svg" alt="Logo" height="100px" />
+  <img src="https://cargorocket.de/assets/images/cargorocket-logo.png" alt="Logo" height="100px" />
 
   CargoRocket Hermes API-Middleware
   ---

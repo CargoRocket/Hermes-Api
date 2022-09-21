@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  cargorocket_de_mw:
+    image: "cargorocket_de_mw:latest"
+    build: .
+    container_name: "cargorocket_de_mw"
+    volumes:
+      - /srv/volumes/cargorocket/data:/app/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cargorocket_de_mw.rule=Host(`api.cargorocket.de`)"
+      - "traefik.http.routers.cargorocket_de_mw.entrypoints=websecure"
+      - "traefik.http.routers.cargorocket_de_mw.tls=true"
+      - "traefik.http.routers.cargorocket_de_mw.tls.certResolver=lets_encrypt"
+volumes:
+  data:
